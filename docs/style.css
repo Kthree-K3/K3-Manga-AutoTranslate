@@ -1,0 +1,453 @@
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent-color: #ff0055; /* بازگشت به رنگ صورتی اصلی */
+    --border-color: #333;
+    --manga-pattern: radial-gradient(#333 1px, transparent 1px);
+    --new-tag: #00d4ff;
+    --fix-tag: #ffe600;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.8;
+    overflow-x: hidden;
+    background-image: var(--manga-pattern);
+    background-size: 20px 20px;
+}
+
+/* --- هدر --- */
+header {
+    height: 55vh;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(18,18,18,0.8) 0%, var(--bg-color) 100%), url('https://raw.githubusercontent.com/Kthree-K3/K3-Manga-Translator-Editor-edition/main/assets/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border-bottom: 4px solid var(--accent-color);
+}
+
+.header-logo {
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(255, 0, 85, 0.4));
+    animation: fadeInDown 1s ease-out;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-shadow: 4px 4px 0px var(--accent-color);
+}
+
+.highlight-text {
+    color: var(--accent-color);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-top: 20px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+/* --- کانتینر اصلی --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* --- لینک‌های داخل متن --- */
+.link-highlight {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px dashed var(--accent-color);
+    transition: all 0.3s;
+}
+
+.link-highlight:hover {
+    color: white;
+    background-color: var(--accent-color);
+    border-bottom: 1px solid transparent;
+}
+
+/* --- دکمه دانلود --- */
+.mid-download-container {
+    text-align: center;
+    margin: 60px 0 80px 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+.mid-download-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn-download {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 15px 50px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+    transition: all 0.3s;
+    border: 2px solid var(--accent-color);
+}
+
+.btn-download:hover {
+    background-color: transparent;
+    color: white;
+    box-shadow: 0 0 30px var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* --- بخش نمایش تصویر محیط برنامه --- */
+.app-showcase {
+    text-align: center;
+    margin-bottom: 80px;
+    opacity: 0;
+}
+
+.app-screenshot {
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    border: 2px solid #333;
+    transition: transform 0.3s ease;
+}
+
+.app-screenshot:hover {
+    transform: scale(1.01);
+    border-color: var(--accent-color);
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- بخش‌بندی متن --- */
+.section {
+    margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--accent-color);
+    border-right: 5px solid var(--text-primary);
+    padding-right: 15px;
+    margin-bottom: 30px;
+    display: inline-block;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    text-align: justify;
+}
+
+/* --- باکس‌های اطلاعاتی --- */
+.info-box {
+    background: #252525;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-right: 4px solid;
+    transition: transform 0.3s ease;
+}
+
+.info-box:hover {
+    transform: translateX(-5px);
+}
+
+.info-box h3 {
+    margin-bottom: 10px;
+}
+
+.ai-box { border-color: var(--accent-color); }
+.ai-box h3 { color: var(--accent-color); }
+
+.render-box { border-color: #00d4ff; }
+.render-box h3 { color: #00d4ff; }
+
+.quality-box { border-color: #ffe600; }
+.quality-box h3 { color: #ffe600; }
+
+
+/* --- کارت‌های ویژگی --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 0, 85, 0.2);
+    border-color: var(--accent-color);
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+.feature-card ul {
+    list-style: none;
+}
+
+.feature-card li {
+    margin-bottom: 10px;
+    padding-right: 20px;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.feature-card li::before {
+    content: "•";
+    color: var(--accent-color);
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* --- استایل بخش آپدیت --- */
+.update-box {
+    background: #151515;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.update-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+}
+
+.version-badge {
+    background: var(--accent-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.update-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.update-list {
+    list-style: none;
+}
+
+.update-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+.tag {
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+    font-weight: bold;
+    color: #000;
+    flex-shrink: 0;
+}
+
+.tag-new { background-color: var(--new-tag); }
+.tag-fix { background-color: var(--fix-tag); }
+
+/* --- فوتر و گیت‌هاب --- */
+.footer-section {
+    background: #151515;
+    padding: 60px 20px 20px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    margin-top: 50px;
+}
+
+.cta-content {
+    margin-bottom: 50px;
+}
+
+.cta-content p, footer p {
+    text-align: center;
+}
+
+.btn-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.05);
+}
+
+.btn-github:hover {
+    background-color: white;
+    border-color: white;
+    color: black;
+    transform: translateY(-3px);
+}
+
+.btn-github svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+/* --- سوشال مدیا --- */
+.social-container {
+    margin: 30px auto;
+    max-width: 600px;
+}
+
+.contact-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.social-link svg {
+    fill: #ffffff;
+    transition: fill 0.3s ease;
+}
+
+.social-link.instagram:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    border-color: white;
+    transform: translateY(-5px);
+}
+
+.social-link.telegram:hover {
+    background-color: #0088cc;
+    border-color: #0088cc;
+    transform: translateY(-5px);
+}
+
+.social-link.youtube:hover {
+    background-color: #ff0000;
+    border-color: #ff0000;
+    transform: translateY(-5px);
+}
+
+footer {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 30px;
+}
+
+.footer-hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to left, rgba(255, 0, 85, 0), rgba(255, 0, 85, 0.5), rgba(255, 0, 85, 0));
+    margin: 20px auto;
+    width: 80%;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin-top: 10px;
+    direction: ltr;
+}
+
+/* --- ریسپانسیو --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    header { height: auto; padding: 100px 20px; }
+    .grid-container { grid-template-columns: 1fr; }
+    .update-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
